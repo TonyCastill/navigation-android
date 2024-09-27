@@ -11,21 +11,44 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.navigation.ui.theme.NavigationTheme
 
 class MainActivity : ComponentActivity() {
+    /**lateinit is used to declare
+     * a non-nullable variable that will
+     * be initialized later after the object is created.
+     * It allows you to delay the initialization of a variable
+     * without having to make it nullable, and it can only be
+     * used with var (mutable variables).
+     *
+     * Usually variables that depend on dependency injections
+     */
+    lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NavigationTheme {
+            navController = rememberNavController()
+            /** rememberNavController()
+             * A predefined composable function that allows us to
+             * immediately create a nav host controller
+             * which will handle the navigation in our app
+             */
+
+            //NavGraph.kt
+            SetupNavGraph(navController = navController)
+            
+            /*NavigationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
-            }
+            }*/
         }
     }
 }
