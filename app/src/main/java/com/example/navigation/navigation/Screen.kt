@@ -1,4 +1,4 @@
-package com.example.navigation
+package com.example.navigation.navigation
 
 
 /**
@@ -19,6 +19,11 @@ const val DETAIL_ARGUMENT_KEY = "id"
 
 //Another argument
 const val DETAIL_ARGUMENT_KEY2="name"
+
+//Constants of Nested Navigation Graph
+const val AUTHENTICATION_ROUTE = "authentication"
+const val ROOT_ROUTE = "root"
+const val HOME_ROUTE = "home"
 
 sealed class Screen(val route : String) {
     //This class contains the screens
@@ -73,4 +78,8 @@ sealed class Screen(val route : String) {
         }
 
     }
+
+    object Login: Screen(route = "login_screen")
+    object SignUp: Screen(route = "sign_up_screen")
+
 }

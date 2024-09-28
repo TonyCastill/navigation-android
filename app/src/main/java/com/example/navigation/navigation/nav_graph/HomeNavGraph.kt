@@ -1,32 +1,25 @@
-package com.example.navigation
+package com.example.navigation.navigation.nav_graph
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.navigation
+import com.example.navigation.navigation.DETAIL_ARGUMENT_KEY
+import com.example.navigation.navigation.DETAIL_ARGUMENT_KEY2
+import com.example.navigation.navigation.HOME_ROUTE
+import com.example.navigation.navigation.Screen
+import com.example.navigation.screens.DetailScreen
+import com.example.navigation.screens.HomeScreen
 
-@Composable
-fun SetupNavGraph(
-    navController: NavHostController
-){
-    /** NavHost()
-     * A predefined composable function where
-     * We define the nav controller, our start destination and a nav graph builder
-     * Inside Nav Graph builder we define all our destinations
-     */
-    NavHost(navController = navController,
-        //startDestination = "home_screen"
-        startDestination = Screen.Home.route){
-        //Inside this body or nav graph builder, we declare all our destinations and composable screens
-
-        //Here we define our routes
+fun NavGraphBuilder.homeNavGraph(navController: NavController) {// Extension function on a NavGraphBuilder()
+    navigation( // Extension function on a NavGraphBuilder()
+        startDestination = Screen.Home.route, // The first route of the nested navigation graph
+        route = HOME_ROUTE
+    ) {
         composable(route = Screen.Home.route){ HomeScreen(navController) }
-        //We send navController as argument to navigate from there
-        // We can also add arguments
         composable(
             route = Screen.Detail.route,
             arguments = listOf( //List of arguments
