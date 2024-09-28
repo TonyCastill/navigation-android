@@ -54,7 +54,31 @@ fun HomeScreen(
     ){
         Text("Home",
             modifier = Modifier.clickable {
-                navController.navigate(route=Screen.Detail.route)
+                /**
+                 * Whenever we modify the route from the Screen sealed class,
+                 * we have to change it here
+                 */
+                navController.navigate( //Remember to change NavGraph.kt and Screen.kt
+                    //No arguments
+                    //route=Screen.Detail.route
+
+                    //Required Single argument in plain text
+                    //"detail_screen/"+1
+
+                    //Required Single Argument using Screen function
+                    //route=Screen.Detail.passId(10)
+
+                    //Required Muliple Arguments using Screen function
+                    //route = Screen.Detail.passNameAndId(id=10, name = "Tony")
+
+                    //Optional Single Argument using Screen function
+                    //route = Screen.Detail.passId()
+
+                    //Optional Multiple Argument using Scree function
+                    route = Screen.Detail.passIdAndName()
+
+                )
+
                 //.navigate() allows us to navigate to a destination
             },
             color=MaterialTheme.colorScheme.primary,
