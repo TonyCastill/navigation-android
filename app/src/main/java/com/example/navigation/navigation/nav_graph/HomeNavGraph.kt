@@ -7,20 +7,27 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.example.navigation.navigation.BottomBarScreen
 import com.example.navigation.navigation.DETAIL_ARGUMENT_KEY
 import com.example.navigation.navigation.DETAIL_ARGUMENT_KEY2
 import com.example.navigation.navigation.HOME_ROUTE
 import com.example.navigation.navigation.Screen
 import com.example.navigation.screens.DetailScreen
 import com.example.navigation.screens.HomeScreen
+import com.example.navigation.screens.ProfileScreen
+import com.example.navigation.screens.SettingsScreen
 
 fun NavGraphBuilder.homeNavGraph(navController: NavController) {// Extension function on a NavGraphBuilder()
     navigation( // Extension function on a NavGraphBuilder()
-        startDestination = Screen.Home.route, // The first route of the nested navigation graph
+        //startDestination = Screen.Home.route, // The first route of the nested navigation graph
+
+        //Start destination with bottom navigation bar
+        startDestination = BottomBarScreen.HomeBB.route,
         route = HOME_ROUTE
     ) {
-        composable(route = Screen.Home.route){ HomeScreen(navController) }
-        composable(
+        //Comment this line when using bottom bar, because Screen != BottomBarScreen Sealed class
+        //composable(route = Screen.Home.route){ HomeScreen(navController) }
+        /*composable(
             route = Screen.Detail.route,
             arguments = listOf( //List of arguments
                 // id
@@ -44,6 +51,13 @@ fun NavGraphBuilder.homeNavGraph(navController: NavController) {// Extension fun
             Log.d("Args",it.arguments?.getString("name").toString())
             //The destination
             DetailScreen(navController)
-        }
+        }*/
+
+        //BOTTOM NAVIGATION BAR
+        composable(route= BottomBarScreen.HomeBB.route){ HomeScreen(navController) }
+        composable(route= BottomBarScreen.ProfileBB.route){ ProfileScreen(navController)}
+        composable(route=BottomBarScreen.SettingsBB.route){ SettingsScreen(navController) }
+
+
     }
 }
