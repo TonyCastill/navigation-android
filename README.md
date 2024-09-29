@@ -21,3 +21,14 @@ So, when the project has many screens (20-30) we should implement a nested navig
 
 We could improve this even further
 ![image](https://github.com/user-attachments/assets/5942e920-bed1-4e49-a140-9c5261f6cafe)
+
+## WHEN TO CREATE NEW NAV HOSTS? ##
+![image](https://github.com/user-attachments/assets/0bf9910a-1f95-4067-b6ed-c98c447b1a03)
+
+In this case, A root graph creates an initial Nav Host Controller associated to a single nav controller, this nav host controller is passed as an argument to  Home and Authentication Nav Graphs, nevertheless, HomeScreen will be the only way we can access to another nav gaph non associated to the other two, so we create a new Nav Host controller associated to its Nav Controller.
+Take a look at the root Nav graph which is receiving an NavHostController instance from rememberNavController() method of the main actvity
+![image](https://github.com/user-attachments/assets/8d5a3f46-b203-4040-8753-164877a579b8)
+As you can see, HomeScreen() is not reveiving the NavHostController, because it will eventually create its own NavHostController
+![image](https://github.com/user-attachments/assets/ef538128-7209-420f-9019-22c1dd0b52ec)
+
+
