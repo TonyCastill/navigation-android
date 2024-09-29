@@ -28,7 +28,11 @@ We could improve this even further
 In this case, A root graph creates an initial Nav Host Controller associated to a single nav controller, this nav host controller is passed as an argument to  Home and Authentication Nav Graphs, nevertheless, HomeScreen will be the only way we can access to another nav gaph non associated to the other two, so we create a new Nav Host controller associated to its Nav Controller.
 Take a look at the root Nav graph which is receiving an NavHostController instance from rememberNavController() method of the main actvity
 ![image](https://github.com/user-attachments/assets/8d5a3f46-b203-4040-8753-164877a579b8)
+
 As you can see, HomeScreen() is not reveiving the NavHostController, because it will eventually create its own NavHostController
 ![image](https://github.com/user-attachments/assets/ef538128-7209-420f-9019-22c1dd0b52ec)
 
+Full Repository Nested Navigation with Bottom Bar and Jetpack Compose | Android Studio Tutorial
+
+https://github.com/stevdza-san/NestedNavigationBottomBarDemo
 
